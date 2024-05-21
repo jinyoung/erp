@@ -1,0 +1,29 @@
+Please implement for this Event Storming Model:
+
+{"_type":"BoundedContext","name":"HR","aggregates":[{"aggregateRoot":{"_type":"AggregateRoot","fieldDescriptors":[{"className":"String","name":"name","displayName":"이름","_type":"FieldDescriptor"},{"className":"String","name":"position","displayName":"직책","_type":"FieldDescriptor"},{"className":"String","name":"department","displayName":"부서","_type":"FieldDescriptor"},{"className":"Money","name":"salary","displayName":"급여","_type":"FieldDescriptor"}]},"commands":[{"_type":"Command","fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"},{"className":"String","name":"position","_type":"FieldDescriptor"},{"className":"String","name":"department","_type":"FieldDescriptor"},{"className":"Money","name":"salary","_type":"FieldDescriptor"}],"name":"CreateEmployee","displayName":"직원 생성"},{"_type":"Command","fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"},{"className":"String","name":"position","_type":"FieldDescriptor"},{"className":"String","name":"department","_type":"FieldDescriptor"},{"className":"Money","name":"salary","_type":"FieldDescriptor"}],"name":"UpdateEmployee","displayName":"직원 수정"},{"_type":"Command","fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"}],"name":"DeleteEmployee","displayName":"직원 삭제"}],"events":[{"fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"},{"className":"String","name":"position","_type":"FieldDescriptor"},{"className":"String","name":"department","_type":"FieldDescriptor"},{"className":"Money","name":"salary","_type":"FieldDescriptor"}],"name":"EmployeeCreated","_type":"Event"},{"fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"},{"className":"String","name":"position","_type":"FieldDescriptor"},{"className":"String","name":"department","_type":"FieldDescriptor"},{"className":"Money","name":"salary","_type":"FieldDescriptor"}],"name":"EmployeeUpdated","_type":"Event"},{"fieldDescriptors":[{"className":"String","name":"name","_type":"FieldDescriptor"}],"name":"EmployeeDeleted","_type":"Event"}],"name":"Employee","displayName":"직원","_type":"Aggregate"},{"aggregateRoot":{"_type":"AggregateRoot","fieldDescriptors":[{"className":"String","name":"leaveType","displayName":"휴가 종류","_type":"FieldDescriptor"},{"className":"LocalDate","name":"startDate","displayName":"시작일","_type":"FieldDescriptor"},{"className":"LocalDate","name":"endDate","displayName":"종료일","_type":"FieldDescriptor"},{"className":"String","name":"reason","displayName":"휴가 사유","_type":"FieldDescriptor"}]},"commands":[{"_type":"Command","fieldDescriptors":[{"className":"String","name":"leaveType","_type":"FieldDescriptor"},{"className":"LocalDate","name":"startDate","_type":"FieldDescriptor"},{"className":"LocalDate","name":"endDate","_type":"FieldDescriptor"},{"className":"String","name":"reason","_type":"FieldDescriptor"}],"name":"ApplyLeave","displayName":"휴가 신청"},{"_type":"Command","fieldDescriptors":[{"className":"String","name":"leaveType","_type":"FieldDescriptor"},{"className":"LocalDate","name":"startDate","_type":"FieldDescriptor"},{"className":"LocalDate","name":"endDate","_type":"FieldDescriptor"}],"name":"CancelLeave","displayName":"휴가 취소"}],"events":[{"fieldDescriptors":[{"className":"String","name":"leaveType","_type":"FieldDescriptor"},{"className":"LocalDate","name":"startDate","_type":"FieldDescriptor"},{"className":"LocalDate","name":"endDate","_type":"FieldDescriptor"},{"className":"String","name":"reason","_type":"FieldDescriptor"}],"name":"LeaveApplied","_type":"Event"},{"fieldDescriptors":[{"className":"String","name":"leaveType","_type":"FieldDescriptor"},{"className":"LocalDate","name":"startDate","_type":"FieldDescriptor"},{"className":"LocalDate","name":"endDate","_type":"FieldDescriptor"}],"name":"LeaveCancelled","_type":"Event"}],"name":"Leave","displayName":"휴가","_type":"Aggregate"}],"policies":[]}
+
+
+I want to utilize following techniques:
+
+- clean architecture
+- spring-boot3
+- spring-data-rest
+- JPA (must use package jakarta.persistence.* instead of javax.persistence.*)
+- H2 DB
+- Lombok
+- Kafka with spring-cloud-streams library 
+- JUnit Test
+
+
+SELF-CRITICISM: 
+ - when you create pom.xml, USE correct parent project to spring boot 3
+ - when you create pom.xml, you MUST specify the version: 3.1.3 ONLY for the spring-cloud-streams
+ - Please generate start from pom.xml
+
+
+when you create execution shell (run.sh), please add '--no-transfer-progress' option not to output transfer progress if there's mvn command:
+
+```
+mvn [command] --no-transfer-progress
+```
+
